@@ -39,8 +39,8 @@ call python3 -m pip install --upgrade -r requirements-build.txt
 REM ----- Build UI
 pushd .
 cd src/tribler/ui/
-call npm install
-call npm run build
+call npm.cmd install
+call npm.cmd run build
 popd
 
 REM ----- Build
