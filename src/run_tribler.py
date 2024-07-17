@@ -7,6 +7,7 @@ import logging.config
 import os
 import sys
 import threading
+import tribler
 import typing
 import webbrowser
 from pathlib import Path
@@ -85,7 +86,7 @@ async def main() -> None:
     session = Session(config)
     await session.start()
 
-    image_path = Path(__file__).absolute() / "../tribler/ui/public/tribler.png"
+    image_path = Path(tribler.__file__).parent / "ui/public/tribler.png"
     image = Image.open(image_path.resolve())
     url = f"http://localhost:{session.rest_manager.get_api_port()}/ui/#/downloads/all?key={config.get('api/key')}"
     menu = (pystray.MenuItem('Open', lambda: webbrowser.open_new_tab(url)),
